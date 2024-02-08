@@ -1,0 +1,187 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{../preamble_math}
+
+\newtheorem{exercici}{Exercice}
+\theoremstyle{definition}
+\newtheorem{definition}{Definició}
+\theoremstyle{remark}
+\newtheorem*{res}{Resolution}
+
+\titleformat{\section}
+  {\normalfont\fontsize{11}{15}\bfseries}{\thesection}{1em}{}
+
+% \renewcommand{\theenumi}{\textbf{\arabic{enumi}}}
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\theenumiii}{\roman{enumiii}}
+\setlength\multlinegap{0pt} % disable the margins on \begin{multline} command.
+
+\title{\bfseries\Large Tutorial 1}
+
+\author{Víctor Ballester Ribó}
+\date{\parbox{\linewidth}{\centering
+  Turbulence\endgraf
+  M2 Applied and Theoretical Mathematics\endgraf
+  Université Paris-Dauphine\endgraf
+  January 2024\endgraf}}
+  %\setlength{\headheight}{13.6pt}
+
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+\begin{exercici}
+  Consider the flow in a rectangular box of size $(L\times L\times H)$ with periodic boundary conditions along the horizontal directions $(x, y)$ and free slip boundary conditions along the vertical direction $(z)$:
+  \begin{equation*}
+    u(x + nxL, y + ny L, z) = u(x, y, z), \qquad\text{and}\qquad\partial_z{u_x}= \partial_z{u_y} = u_z = 0 \quad \text{at } z = 0 \text{ and } z = H.
+  \end{equation*}
+  Are energy and helicity conserved for the incompressible Euler equations in this domain?
+\end{exercici}
+\begin{res}
+  The incompressible Euler equations are:
+  \begin{equation*}
+    \begin{cases}
+      \displaystyle\partial_t\vf{u} + (\vf{u}\cdot\nabla)\vf{u} = -\nabla p \\
+      \divp\vf{u} = 0
+    \end{cases}
+  \end{equation*}
+  We study first the energy $\langle \frac{1}{2}\abs{\vf{u}}^2\rangle$. Note that $\dv{}{t}\langle \frac{1}{2}\abs{\vf{u}}^2\rangle = \langle \vf{u}\cdot\partial_t\vf{u}\rangle$. Then:
+  \begin{align*}
+    \langle \vf{u}\cdot\partial_t\vf{u}\rangle & = -\langle \vf{u}\cdot(\vf{u}\cdot\nabla)\vf{u}\rangle - \langle \vf{u}\cdot\nabla p\rangle                                                                                        \\
+                                               & = -\frac{1}{2}\langle \vf{u}\cdot\nabla\abs{\vf{u}}^2\rangle - \langle \vf{u}\cdot\nabla p\rangle                                                                                  \\
+                                               & = -\frac{1}{2}\left[\langle \divp(\vf{u}\abs{\vf{u}}^2)\rangle - \langle \abs{\vf{u}}^2\divp\vf{u}\rangle\right]  - [\langle \divp(\vf{u}p)\rangle  - \langle p\divp\vf{u}\rangle] \\
+                                               & = -\frac{1}{2} \langle \divp(\vf{u}\abs{\vf{u}}^2)\rangle - \langle \divp(\vf{u}p)\rangle                                                                                          \\
+                                               & = -\frac{1}{2} \langle \partial_z({u}_z\abs{\vf{u}}^2)\rangle - \langle \partial_z({u}_zp)\rangle
+  \end{align*}
+  where we have used the incompressibility condition $\divp\vf{u}=0$ twice in the penultimate equality and the periodic boundary conditions in $x$ and $y$ in the last equality. Now, note that from the hypothesis $u_zp\big|_{z=0}^{z=H} = 0$ and so the second term of the last equation vanishes. Similarly, for the first term we have $u_z\abs{\vf{u}}^2\big|_{z=0}^{z=H} = 0$ and so the first term also vanishes. Therefore, $\dv{}{t}\langle \frac{1}{2}\abs{\vf{u}}^2\rangle = 0$ and so energy is conserved.
+
+  Now let's check the helicity $\langle \vf{u}\cdot\vf{w}\rangle$. Note that $\dv{}{t}\langle \vf{u}\cdot\vf{w}\rangle =  \langle \partial_t\vf{u}\cdot\vf{w}\rangle+ \langle \vf{u}\cdot\partial_t\vf{w}\rangle$.
+  We recall the equation for the vorticity $\vf{w} = \nabla\times\vf{u}$:
+  \begin{equation*}
+    \partial_t \vf{w} = \rotp(\vf{u}\times\vf{w})
+  \end{equation*}
+  with $\divp\vf{w}=0$.
+  So:
+  \begin{align*}
+    \dv{}{t} \langle \vf{u}\cdot\vf{w}\rangle & =\langle \partial_t\vf{u}\cdot\vf{w}\rangle+ \langle \vf{u}\cdot\partial_t\vf{w}\rangle                                                      \\
+                                              & =\langle \vf{w}\cdot (\vf{u}\times\vf{w}) \rangle - \langle \vf{w}\cdot\grad p'\rangle + \langle \vf{u}\cdot\rotp(\vf{u}\times\vf{w})\rangle \\
+                                              & = - \langle \divp(p'\vf{w})\rangle+\langle p'\divp\vf{w}\rangle  +\langle (\vf{u} \times \vf{w})\cdot\rotp\vf{u}\rangle                      \\
+                                              & = -  \langle \partial_z(p'w_z)\rangle + \langle (\vf{u} \times \vf{w})\cdot\vf{w}\rangle                                                     \\
+                                              & = - \langle \partial_z(p'w_z)\rangle
+  \end{align*}
+  with $p' = p + \frac{1}{2}\abs{\vf{u}}^2$ and the third and last equality follows from $\vf{w}\perp \vf{u}\times\vf{w}$. Now note at $z=0,H$ we have:
+  \begin{equation}
+    w_z =\partial_x u_y - \partial_y u_x
+  \end{equation}
+  but the quantity $p'w_z$ is not necessarily zero at $z=0,H$. Thus, the helicity is not necessarily conserved.
+\end{res}
+\begin{exercici}
+  Consider the incompressible Navier-Stokes equations in infinite space in a rotating reference frame given by:
+  \begin{equation*}
+    \partial_t\vf{u} + (\vf{u}\cdot\nabla)\vf{u} + 2\vf\Omega\times\vf{u} = -\nabla p + \nu\nabla^2\vf{u} + \vf{f}
+  \end{equation*}
+  where $\Omega$ is a constant vector indicating the direction and amplitude of the rotation. Which of the aforementioned symmetries remain?
+  \begin{itemize}
+    \item Space translations
+    \item Time translations
+    \item Galilean transformations
+    \item Rotations
+    \item Parity (reflections)
+    \item Scaling
+  \end{itemize}
+\end{exercici}
+\begin{res}
+  In what follows we assume that if we are studying a symmetry $\mathcal{S}$, then $\vf{f}$ is invariant under $\mathcal{S}$. Otherwise, we would not have any symmetry.
+  \begin{itemize}
+    \item Space translations: Since we keep the time fixed and $\grad'=\grad$ (assuming $\vf{x}'=\vf{x}+\vf{\ell}$), the equation is invariant under space translations.
+    \item Time translations: Since we keep the space fixed and $\partial_{t'}=\partial_t$ (assuming $t'=t+T$), the equation is invariant under time translations.
+    \item Galilean transformations: We need to check whether $\vf{u}'(\vf{x}',t') = \vf{u}(\vf{x}'-\vf{c}t',t') + \vf{c}$ is a solution provided that $\vf{u}(\vf{x},t)$ is a solution.
+
+          Using the chain rule, we have that: $\partial_{t'}\vf{u}'=\partial_{t}\vf{u}-\vf{c}\cdot\grad\vf{u}$ and $\grad'=\grad$. Thus:
+          \begin{align*}
+            \partial_{t'}\vf{u}'        & = \partial_t\vf{u} - \vf{c}\cdot\grad\vf{u}     \\
+            (\vf{u}'\cdot\grad')\vf{u}' & = (\vf{u}+\vf{c})\cdot\grad\vf{u}               \\
+            2\vf\Omega\times\vf{u}'     & = 2\vf\Omega\times\vf{u}+2\vf\Omega\times\vf{c} \\
+            \grad' p'                   & = \grad p                                       \\
+            \nu\nabla'^2\vf{u}'         & = \nu\nabla^2\vf{u}                             \\
+            \vf{f}'                     & = \vf{f}
+          \end{align*}
+          Summing the terms, we have that the equation is invariant under Galilean transformations if and only if $\vf{\Omega}\times \vf{c} = 0$, that is, $\vf{c}$ is parallel to $\vf{\Omega}$.
+    \item Rotations: We need to check whether $\vf{u}'(\vf{x}',t') = \vf{R}\vf{u}(\vf{R}^{-1}\vf{x}',t')$ is a solution provided that $\vf{u}(\vf{x},t)$ is a solution.
+
+          We will use Einstein's notation to compute the nonlinear and dispersive terms. Let $v(\vf{x}',t') = u(\vf{R}^{-1}\vf{x}',t')$. Then:
+          \begin{equation*}
+            \partial_j(v_i(\vf{x}',t'))=\partial_j(u_i(r^{-1}_{k\ell} x_\ell\vf{e}_k,t')) = (\partial_ku_i)|_{(\vf{x},t)=(\vf{R}^{-1}\vf{x}',t')}\partial_j(r^{-1}_{k\ell} x_\ell) = (\partial_ku_i)|_{(\vf{x},t)=(\vf{R}^{-1}\vf{x}',t')}r^{-1}_{kj}
+          \end{equation*}
+          Thus, $\partial_j(v_i(\vf{x}',t'))=r^{-1}_{kj}(\partial_ku_i)(\vf{R}^{-1}\vf{x}',t')$. Taking another derivative:
+          \begin{multline*}
+            \partial_j^2(v_i(\vf{x}',t'))=\partial_j[r^{-1}_{kj}(\partial_ku_i)(\vf{R}^{-1}\vf{x}',t')]=r_{jk}(\partial_m\partial_ku_i)(\vf{R}^{-1}\vf{x}',t')\partial_j(r^{-1}_{m\ell}x_\ell)=\\=r_{jk}r^{-1}_{mj}(\partial_m\partial_ku_i)(\vf{R}^{-1}\vf{x}',t')= \delta_{km}(\partial_m\partial_ku_i)(\vf{R}^{-1}\vf{x}',t')=(\partial_k\partial_ku_i)(\vf{R}^{-1}\vf{x}',t')
+          \end{multline*}
+          Moreover since $\vf{D}_{\vf{x}}f=\vf{D}_{\vf{x}'}f\circ \vf{R}$, taking transpose we have that $\grad'f=\vf{R} \grad f$.
+          Thus, using the linearity of the derivative we conclude:
+          \begin{align*}
+            \partial_{t'}\vf{u}'        & = \vf{R} \partial_t\vf{u}                                                                                    \\
+            (\vf{u}'\cdot\grad')\vf{u}' & = \vf{R}(\vf{u}\cdot\grad)\vf{u}                                                                             \\
+            2\vf\Omega\times\vf{u}'     & =  2\vf{R}( \vf\Omega\times\vf{u})-2(\vf{R}\vf\Omega)\times(\vf{R}\vf{u}) + 2\vf{\Omega}\times(\vf{R}\vf{u}) \\
+            \grad' p'                   & = \vf{R}\grad p                                                                                              \\
+            \nu\nabla'^2\vf{u}'         & = \nu\vf{R}\nabla^2\vf{u}                                                                                    \\
+            \vf{f}'                     & = \vf{R}\vf{f}
+          \end{align*}
+          where we have used the identity $(\vf{R}\vf{a})\times(\vf{R}\vf{b})= \vf{R}(\vf{a}\times\vf{b})$ for rotations. So in order to be invariant under rotations we need $(\vf\Omega-\vf{R}\vf\Omega)\times(\vf{R}\vf{u})=0$. So if $\vf\Omega=\vf{R}\vf\Omega$, that is, $\vf\Omega$ is parallel to the rotation axis, then the equation is invariant under rotations.
+    \item Parity: The parity relations are: $\vf{u}' = -\vf{u}$, $\vf{x}' = -\vf{x}$. Since $\grad'=-\grad$ and $\vf{u}'=-\vf{u}$ and we keep the same temporal variable, each term of the equation changes sign. Thus, the equation is invariant under parity.
+    \item Scaling: We need to check whether $\vf{u}'(\vf{x}',t') = \lambda^\beta\vf{u}(\lambda\vf{x}',\lambda^\alpha t')$ is a solution provided that $\vf{u}(\vf{x},t)$ is a solution. We have that:
+          \begin{align*}
+            \partial_{t'}\vf{u}'        & =\lambda^{\beta+\alpha}\partial_t\vf{u}      \\
+            (\vf{u}'\cdot\grad')\vf{u}' & = \lambda^{2\beta+1}(\vf{u}\cdot\grad)\vf{u} \\
+            2\vf\Omega\times\vf{u}'     & = 2\lambda^\beta\vf\Omega\times\vf{u}        \\
+            \grad' p'                   & = \lambda^{2\beta+1}\grad p                  \\
+            \nu\nabla'^2\vf{u}'         & = \lambda^{\beta+2}\nabla^2\vf{u}
+            % \lambda^{\beta+\alpha}\partial_{t'}\vf{u}'+\lambda^{2\beta+1}(\vf{u}'\cdot\grad')\vf{u}' + 2\lambda^\beta\vf\Omega\times\vf{u}' & = -\lambda^{2\beta+1}\grad' p' + \nu\lambda^{\beta+2}\nabla'^2\vf{u}' + \vf{f}'
+          \end{align*}
+          Here we have used that $\grad p$ has the same scaling as $\vf{u}\cdot\grad\vf{u}$  even in this rotating frame. But we can clearly see that there is no way to match the scalings $\beta$ and $\beta+2$. Thus, the equation is not invariant under scaling.
+  \end{itemize}
+\end{res}
+\begin{exercici}
+  Consider the equation:
+  \begin{equation*}
+    \partial_t\vf{a} + \vf{b}\times\vf{a} = -\nabla P' + \nu\nabla^2\vf{a}
+  \end{equation*}
+  where $\divp\vf{a}=0$. $\vf{b}$ is related to $\vf{a}$ as $\vf{b} = (\nabla\times)^n\vf{a}$ for some $n\in\NN$. For $n=1$ the system reduces to the Navier-Stokes equations with $\vf{a} = \vf{u}$ and $\vf{b} = \vf{w}$. For $n\neq 1$, are energy $\langle \frac{1}{2} \abs{\vf{a}}^2\rangle$ and helicity $\langle \vf{a}\cdot\vf{b}\rangle$ conserved for $\nu=0$ for these systems (for smooth $\vf{a}$ and $\vf{b}$)? What are the scaling symmetries they have for $\nu=0$ and which one of these survives for $\nu\neq 0$?
+\end{exercici}
+\begin{res}
+  Throughout the resolution we assume that we have periodic boundary conditions on our domain.
+
+  We first assume $\nu=0$. Note that $\dv{}{t}\langle \frac{1}{2} \abs{\vf{a}}^2\rangle = \langle \vf{a}\cdot\partial_t\vf{a}\rangle$. Then:
+  \begin{equation*}
+    \langle\vf{a}\cdot \partial_t\vf{a}\rangle = -\langle \vf{a}\cdot(\vf{b}\times\vf{a})\rangle - \langle \vf{a}\cdot\nabla P'\rangle =0
+  \end{equation*}
+  The first term vanishes since $\vf{a}\perp\vf{b}\times\vf{a}$ and the second term vanishes since $\vf{a}$ is divergence-free and the fact that we have periodic boundary conditions. Thus, energy is conserved. For the helicity we first need to find the PDE that $\vf{b}$ satisfies. Taking ${(\rotp)}^n$ to the initial equation we have:
+  \begin{equation*}
+    \partial_t\vf{b} + {(\rotp)}^n(\vf{b}\times\vf{a}) = 0
+  \end{equation*}
+  with $\divp\vf{b}=0$.
+  Thus:
+  \begin{align*}
+    \dv{}{t}\langle \vf{a}\cdot\vf{b}\rangle & = \langle \partial_t\vf{a}\cdot\vf{b}\rangle + \langle \vf{a}\cdot\partial_t\vf{b}\rangle                                                           \\
+                                             & = -\langle (\vf{b}\times\vf{a})\cdot\vf{b}\rangle - \langle \grad P'\cdot\vf{b}\rangle - \langle \vf{a}\cdot {(\rotp)}^n(\vf{b}\times\vf{a})\rangle \\
+                                             & = -\langle (({\rotp})^n\vf{a})\cdot (\vf{b}\times \vf{a})\rangle                                                                                    \\
+                                             & = -\langle \vf{b}\cdot (\vf{b}\times \vf{a})\rangle                                                                                                 \\
+                                             & =0
+  \end{align*}
+  where in the third equality we have used the fact that $\vf{b}\perp \vf{b}\times\vf{a}$, $\divp \vf{b}=0$ and the periodic boundary conditions. Thus, helicity is conserved.
+
+  We now study the scaling symmetries. We need to check whether $\vf{a}'(\vf{x}',t') = \lambda^\beta\vf{a}(\lambda\vf{x}',\lambda^\alpha t')$ is a solution provided that $\vf{a}(\vf{x},t)$ is a solution. We have that $\vf{b}'=(\vf\nabla'\times)^n\vf{a}' = \lambda^{n+\beta}\vf{b}$. Thus:
+  \begin{align*}
+    \partial_{t'}\vf{a}' & = \lambda^{\beta+\alpha}\partial_t\vf{a} \\
+    \vf{b}'\times\vf{a}' & = \lambda^{n+2\beta}\vf{b}\times\vf{a}   \\
+    \grad' P'            & = \lambda^{n+2\beta}\grad P'             \\
+    \nu\nabla'^2\vf{a}'  & = \lambda^{\beta+2}\nu\nabla^2\vf{a}
+  \end{align*}
+  If $\nu=0$, from $\beta+\alpha=n+2\beta$ we have the family of invariant scaling $\alpha=n+\beta$. If $\nu\neq 0$, then for each $n$ we only have one scaling: $\beta=2-n$ and $\alpha=2$.
+\end{res}
+\end{document}
