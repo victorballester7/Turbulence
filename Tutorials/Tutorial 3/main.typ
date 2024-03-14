@@ -149,7 +149,7 @@
     $
     We have that:
     $
-      diff_t u^nu         &= - (x-L tanh((L x)/(2 nu t)))/t^2 + (L^2 x)/(2 nu t^2) (sech((L x)/(2 nu t)))^2 \
+      diff_t u^nu         &= - (x-L tanh((L x)/(2 nu t)))/t^2 + (L^2 x)/(2 nu t^3) (sech((L x)/(2 nu t)))^2 \
       diff_x u^nu         &= 1/t - L^2/(2 nu t^2) (sech((L x)/(2 nu t)))^2 \
       u^nu diff_x u^nu    &= x/t^2 - (L^2 x)/(2 nu t^3) (sech((L x)/(2 nu t)))^2 - L/t^2 tanh((L x)/(2 nu t)) + (L^3 x)/(2 nu t^3) (sech((L x)/(2 nu t)))^2 tanh((L x)/(2 nu t)) \
       -nu diff_(x x) u^nu &= - L^3/(2 nu t^3) (sech((L x)/(2 nu t)))^3 sinh((L x)/(2 nu t))
@@ -198,7 +198,7 @@
     integrating with respect to $x_i$, we get $Psi = 2 nu log(Phi) + g(t)$, and
     again, the constant $g(t)$ does not depend on any spatial variable $x_i$ (by the
     same argument as in the previous exercise). We can in fact determine $g$ from
-    @eq:13. Since $V_i = -diff_i(2 nu log(Phi))$, then by @ex:1 $2 nu log(Phi)$ satisfies
+    @eq:13. Since $V_i = -diff_i (2 nu log(Phi))$, then by @ex:1 $2 nu log(Phi)$ satisfies
     also @eq:13 and thus by the linearity of the derivatives we get that $g'(t) = f(t)$.
 
   2. From @eq:13 we get:
@@ -225,6 +225,7 @@
     $
       Phi(x, t) = sum_(n in ZZ) hat(Phi)_n (0) e^(- nu ((2 pi n) / L)^2 t) e^((2 pi i n x )/ L)
     $
+    The coefficients $hat(Phi)_n (0)$ are determined by the initial condition.
 ]
 
 #exercice[
@@ -257,7 +258,7 @@
     -diff_b diff_i tilde(Psi) + diff_j tilde(Psi) diff_j diff_i tilde(Psi)                                                                                                                         &= 0\
     diff_b V_i + V_j diff_j V_i                                                                                                                                                                    &= 0
   $
-  which is the inviscid Burgers equation with time-variable $b$.
+  which is the inviscid Burgers equation with time variable $b$.
 ]
 #exercice[
   Burgers equation develop finite time singularities. Let us study this in the 1D

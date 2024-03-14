@@ -61,7 +61,7 @@
   $
     diff_t bold(u)_k^< = cal(P)_k^<[-bold(u) dot.c nabla bold(u)] - nabla p_k^< + nu nabla^2 bold(u)_k^< + bold(f)_k^<
   $
-  where we have used that $cal(P)_k^<$ commutes with derivatives. Here $bold(f)_k^<:= cal(P)_k^<bold(f)$. Doing the same for the second equation we get:
+  where we have used that $cal(P)_k^<$ commutes with derivatives. Here $bold(f)_k^<:= cal(P)_k^<bold(f)$ and $p_k^<:= cal(P)_k^<p$. Doing the same for the second equation we get:
   $
     diff_t bold(w)_k^< = cal(P)_k^< [curl (bold(u) times bold(w))] + nu nabla^2 bold(w)_k^< + curl bold(f)_k^<
   $
@@ -69,14 +69,22 @@
   $
     2 diff_t cal(H)_k & = angle.l bold(w)_k^< dot.c diff_t bold(u)_k^< angle.r + angle.l diff_t bold(w)_k^< dot.c bold(u)_k^< angle.r \
     & = angle.l bold(w)_k^< dot.c [cal(P)_k^<[-bold(u) dot.c nabla bold(u)] - nabla p_k^< + nu nabla^2 bold(u)_k^< + bold(f)_k^<] angle.r +\ & #h(4cm)+ angle.l [cal(P)_k^< [curl (bold(u) times bold(w))] + nu nabla^2 bold(w)_k^< + curl bold(f)_k^<] dot.c bold(u)_k^< angle.r \
-    & = -angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r - angle.l bold(w) dot.c nabla p_k^< angle.r + nu angle.l bold(w)_k^< dot.c nabla^2 bold(u)_k^< angle.r + angle.l bold(w)_k^< dot.c bold(f)_k^< angle.r +\ & #h(4cm)+ angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r + nu angle.l nabla^2 bold(w)_k^< dot.c bold(u)_k^< angle.r + angle.l curl bold(f)_k^< dot.c bold(u)_k^< angle.r \
-    & = -angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r  - nu angle.l curl bold(w)_k^< dot.c curl bold(u)_k^< angle.r + angle.l bold(w)_k^< dot.c bold(f)_k^< angle.r +\ & #h(4cm)+ angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r - nu angle.l curl bold(w)_k^< dot.c curl bold(u)_k^< angle.r + angle.l bold(f)_k^< dot.c curl bold(u)_k^< angle.r \
-    & = -angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r + angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r -nu angle.l curl bold(w)_k^< dot.c bold(w)_k^< angle.r + 2 angle.l bold(w)_k^< dot.c bold(f)_k^< angle.r \
-    & =: Pi_H (k) - epsilon_H^< (k) + cal(I)_H^< (k)
+    & = -angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r - angle.l bold(w)_k^< dot.c nabla p_k^< angle.r + nu angle.l bold(w)_k^< dot.c nabla^2 bold(u)_k^< angle.r + angle.l bold(w)_k^< dot.c bold(f)_k^< angle.r +\ & #h(4cm)+ angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r + nu angle.l nabla^2 bold(w)_k^< dot.c bold(u)_k^< angle.r + angle.l curl bold(f)_k^< dot.c bold(u)_k^< angle.r \
+    & = -angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r  - nu angle.l (curl bold(w)_k^<) dot.c (curl bold(u)_k^<) angle.r + angle.l bold(w)_k^< dot.c bold(f)_k^< angle.r +\ & #h(4cm)+ angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r - nu angle.l( curl bold(w)_k^<) dot.c (curl bold(u)_k^<) angle.r + angle.l bold(f)_k^< dot.c curl bold(u)_k^< angle.r \
+    & = -angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r + angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r -2nu angle.l (curl bold(w)_k^< )dot.c bold(w)_k^< angle.r + 2 angle.l bold(w)_k^< dot.c bold(f)_k^< angle.r
     $
-    where:
+    where we have used the properties of the projector operator $cal(P)_k^<$ and: 
     $
-    Pi_H (k) := angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r - angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r
+    angle.l bold(w)_k^< dot.c nabla p_k^< angle.r = angle.l bold(w) dot.c nabla p_k^< angle.r = 0 \
+    $
+    because $bold(w)$ is divergence-free.
+    Thus we can write:
+    $
+    diff_t cal(H)_k + Pi_H (k) = - epsilon_H^< (k) + cal(I)_H^< (k)
+    $
+    Here we have defined $Pi_H (k)$ as:
+    $
+    Pi_H (k) := 1/2 lr((angle.l bold(w)_k^< dot.c [bold(u) dot.c nabla bold(u)] angle.r - angle.l [curl (bold(u) times bold(w))] dot.c bold(u)_k^< angle.r))
     $
 
     Now we will deduce the other equivalent expression for $Pi_H (k)$ in terms of $tilde(bold(u))_q$, $tilde(bold(u))_k$, ... 
