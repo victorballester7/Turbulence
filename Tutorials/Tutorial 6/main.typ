@@ -139,6 +139,7 @@ $
     $
     u^0(t,x) =lim_(nu -> 0) u^nu (t,x) = (x - L sgn(x)) / t
     $
+    The mean dissipation is proportial to the mean of the square of the derivative of the solution, which scales as $L^2/t^2$. Since we are asked to compute the mean dissipation per unit time, we get an estimate of $(Delta u)^3/L$.
   2. We have:
     $
     E = 1/2 angle.l u^2 angle.r &= 1/(4L) integral_(-L)^L (x - L sgn(x))^2 / t^2 dd(x)= 1/(4L) integral_(-L)^L (x^2 - 2 L abs(x) + L^2) / t^2 dd(x) \
@@ -146,7 +147,7 @@ $
     $ 
   3. We have
     $
-    dv(E,t) = -4/3 L^2 / t^3 = -4/3 (Delta u)^3 / L
+    dv(E,t) = -1/3 L^2 / t^3 = -1/3 (Delta u)^3 / L
     $
     At first this may be surprising, as $u^0$ is a solution of Burgers equation without viscosity, so _in principle_ there should be no dissipation. The dissipation, though, is due to the discontinuity.
   4. We have:
@@ -165,8 +166,16 @@ $
       &= (L^2)/(2t^3) integral_0^oo 1/(cosh^4(y)) dd(y)\
       &= (L^2)/(3t^3)
     $
-    where we have used that the $integral_0^oo 1/cosh^2 dd(x)$ is convergent. COMMENT SOMETHING.
-  6. ?
+    where we have used that the $integral_0^oo 1/cosh^2 dd(x)$ is convergent. We see that the shock exactly dissipates the same amount of energy as the viscous solution.
+  6. From the evolution of energy we have:
+    $
+      diff_t E + lr(angle.l u/2 diff_x (u^2) angle.r) = -nu angle.l (diff_x u)^2 angle.r
+    $
+    Thus, if $epsilon$ is the dissipation rate of energy we have $epsilon tilde u^3/ ell$ and $nu u^2 / ell^2 tilde u^3 / ell$, which gives $u tilde (epsilon ell)^(1/3)$ and:
+    $
+      nu u^2 / ell^2 tilde u^3 / ell ==> nu tilde u ell tilde epsilon^(1/3) ell^(4/3) ==> ell tilde epsilon^(-1/4) nu^(3/4) ==> eta =epsilon^(-1/4) nu^(3/4)
+    $ 
+    In this limit $epsilon = (L^2)/(3t^3)$, so we have $eta = L^(-1/2)/(3^(-1/4) t^(-3/4)) nu^(3/4)$.
 ]
 
 #exercice[
@@ -185,18 +194,47 @@ $
     $
     delta u^0 (ell) = u^0 (t,ell) - u^0 (t,0) = (ell - L)/t
     $
-  3. 
+  3. Near the shock, we have $h=0$ and away from the shock we have $h=1$.
+  4. 
 ]
 
 #exercice[
   We define structure function of order $p$ as $S_p (ell) = angle.l|u(x + ell) - u(x)|^p angle.r$.
   1. Plot graphically $S_p (ell)$ for $ell = eta/10$ to $ell = L/5$ for $L = 1$, $t = 1$ and $nu = 1, 10^(-2), 10^(-6)$ and $p = 1/3, 2/3, 1, 2, 4, 6$.
-  2. Is something special happening at $ell = eta$?. If not, can you measure the scale at which something special is happening, as a function of $nu$? How does it scale with $nu$?
-  3. Measure $zeta(p)$ such that $S_p (ell) ~ ell^zeta(p)$ for $nu =10^(-6)$ and plot it on a graph. Can it be fitted by a log-normal model?
+  2. Is something special happening at $ell = eta$? If not, can you measure the scale at which something special is happening, as a function of $nu$? How does it scale with $nu$?
+  3. Measure $zeta(p)$ such that $S_p (ell) tilde ell^zeta(p)$ for $nu =10^(-6)$ and plot it on a graph. Can it be fitted by a log-normal model?
   4. Use results of previous section to determine the theoretical exponents, and plot them on the graph.
 ]
 #solution[
-  1. We have:
+  1. Numerically computing the structure function for $u^nu$ we obtain the following results:
+    #figure(
+      grid(
+        columns: 3,
+        rows: 1,
+        gutter: 0.5em,
+        subfigure(image("Images/sp_nu=1.svg", width: 100%), caption: [$nu=1$]),
+        subfigure(image("Images/sp_nu=0.01.svg", width: 100%), caption: [$nu=0.01$]),
+        subfigure(image("Images/sp_nu=1e-06.svg", width: 100%), caption: [$nu=10^(-6)$]),
+      ),
+      caption: [Structure functions for different values of $nu$ and $p$. The dashed line represents the value $ell = eta$.]
+    )
+  2. We note a change on the convexity of the structure function for large values of $p$, specially $p$. At $nu = 0.01$, the inflexion point is around $ell = eta$. As nu decreases, the $S_p (ell)$ becomes more of the form $ell^alpha$, with $alpha < 1$.
+  3. Using polynomial fitting on the data $(log (ell), log S_p(ell))$ we get the following results:
+    #figure(
+      image("Images/log.svg", width: 30%),
+      caption: [Fitting lines to compute the exponents $zeta(p)$ for $nu = 10^(-6)$.]
+    )
+    #align(
+      center,
+      table(
+        columns: 7,
+        inset: 5pt,
+        align: horizon,
+        [$p$], [1/3], [2/3], [1], [2], [4], [6],
+        [$zeta(p)$], [0.36], [0.72], [0.98], [0.98], [0.93], [0.89],
+      )
+    )
+  4. We can compute $S_p(ell)$ in the limit $nu -> 0$:  
     $
       S_p (ell)&=1/(2L) integral_(-L)^L |u^0(t,x + ell) - u^0(t,x)|^p dd(x)\
       &=1/(2L) lr([integral_(-L)^(-ell) |u^0(t,x + ell) - u^0(t,x)|^p dd(x) + integral_(-ell)^0 |u^0(t,x + ell) - u^0(t,x)|^p dd(x) +\
@@ -205,4 +243,5 @@ $
       &=1/(2L) (L-ell) ell^p/t^p + 1/(2L) (2L-ell)^p/t^p ell + 1/2 ell^p/t^p\
       &=lr((1-ell/(2L))) ell^p/t^p + (ell)/(2L) (2L-ell)^p/t^p\
     $
+    Assume first $p<=1$. We see that for $ell << L$, $S_p$ behaves as (we take the first term of the above equation) $C_1 + C_2 ell^p$, thus we expect $zeta(p) tilde p$. For $p>1$, we have $S_p$ behaves as (we take the second term of the above equation) $C_1 + C_2 ell$, thus we expect $zeta(p) tilde 1$. Note that more or less this matches with the numerical experiments of above, specially in the regime $p <1$. For the other ones, we observe a small curvature at the right hand side of the graph, which is due to the fact thatwe are not taking $ell$ small enough.
 ]
