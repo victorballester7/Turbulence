@@ -51,13 +51,16 @@
   3. Assuming self-similarity predict the energy spectrum for every $n$.
 ]
 #solution[
+
+  *NOTE*: In this exercise I changed the values concerning $m$ in the equation, in order to be consistent with the previous TD (I added the $(-1)^m$ term and replaced $nabla^(2m)$ by $nabla^(2m+2)$), so the results should change accordingly.
+
   1. We assume that $alpha = 0$ and $nu_m = 0$. In this case, the helicity is constant in time. Thus, it has constant sign. Assume first that $n$ is even, that is $n=2 ell$ for some $ell$. Then:
     $
       cal(H) = angle.l bold(b) dot.c bold(v) angle.r = lr(angle.l bold(b) dot.c (curl)^(2 ell) bold(b) angle.r) = lr(angle.l ((curl)^(ell) bold(b)) dot.c ((curl)^(ell) bold(b)) angle.r) = lr(angle.l |(curl)^(ell) bold(b)|^2 angle.r) >= 0
     $
     Now assume $n=2ell+1$. Then, denoting $bold(r) = (curl)^(ell) bold(b)$, we have:
     $
-      cal(H) = angle.l bold(b) dot.c bold(v) angle.r = lr(angle.l bold(b) dot.c (curl)^(2 ell+1) bold(b) angle.r) = lr(angle.l ((curl)^(ell) bold(b)) dot.c ((curl)^(ell) bold(b)) angle.r) = lr(angle.l bold(r) dot.c (curl bold(r)) angle.r) 
+      cal(H) = angle.l bold(b) dot.c bold(v) angle.r = lr(angle.l bold(b) dot.c (curl)^(2 ell+1) bold(b) angle.r) = lr(angle.l ((curl)^(ell) bold(b)) dot.c ((curl)^(ell+1) bold(b)) angle.r) = lr(angle.l bold(r) dot.c (curl bold(r)) angle.r) 
     $
     and we cannot say anything about the sign of $cal(H)$.
   2. From a previous TD we have that:
@@ -71,7 +74,7 @@
       diff_t cal(H) &= -alpha angle.l bold(b) dot.c bold(v) angle.r - nu_m angle.l nabla^(m+1) bold(v) dot.c nabla^(m+1) bold(b) angle.r + angle.l bold(f) dot.c bold(v) angle.r\
       & =: - eta_alpha - eta_nu_m + cal(I)_cal(H)
     $
-    Let $Pi_cal(E)(k)$ be the flux of energy at scale $k$ and $Pi_cal(H)(k)$ be the flux of helicity at scale $k$. Now, assume that both $cal(E)$ and $cal(H)$ cascade forward as $nu_m -> 0$. Then, in the inertial regime we would have:
+    Let $Pi_cal(E)(k)$ be the flux of energy when considering the operator $cal(P)_k^<$ and $Pi_cal(H)(k)$ the analogous flux of helicity. Now, assume that both $cal(E)$ and $cal(H)$ cascade forward as $nu_m -> 0$. Then, in the inertial regime we would have:
     $
       Pi_cal(E)(k) = epsilon_nu_m &= nu_m sum_(q=0)^oo q^(2m+2) b_q^2 tilde.eq nu_m sum_(q=k)^oo q^(2m+2) b_q^2 = nu_m k^(-n) sum_(q=k)^oo q^(2m+2)k^n b_q^2\
       &<= nu_m k^(-n) sum_(q=k)^oo q^(2m+2)q^n b_q^2 = nu_m k^(-n) sum_(q=k)^oo q^(2m+2)v_q b_q = k^(-n) eta_nu_m
@@ -102,7 +105,7 @@
     $
     Thus:
     $
-      k_nu^(2m+2 - n/3) tilde eta_(nu_m)^(1/3) nu_m ==> k_nu tilde eta_(nu_m)^(1/(6m+6 - n)) nu_m^(1/(2m+2 - n/3))
+      k_nu^(2m+2 - n/3) tilde eta_(nu_m)^(1/3)/nu_m ==> k_nu tilde eta_(nu_m)^(1/(6m+6 - n))nu_m^(-1/(2m+2 - n/3))
     $
     Now, in the inertial range for the energy we have:
     $

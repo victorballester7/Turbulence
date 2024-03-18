@@ -218,7 +218,7 @@ $
       ),
       caption: [Structure functions for different values of $nu$ and $p$. The dashed line represents the value $ell = eta$.]
     )
-  2. We note a change on the convexity of the structure function for large values of $p$, specially $p$. At $nu = 0.01$, the inflexion point is around $ell = eta$. As nu decreases, the $S_p (ell)$ becomes more of the form $ell^alpha$, with $alpha < 1$.
+  2. We note a change on the convexity of the structure function for large values of $p$, specially $p$. At $nu = 0.01$, the inflexion point is around $ell = eta$. As $nu$ decreases, the $S_p (ell)$ becomes more of the form $ell^alpha$, with $alpha < 1$.
   3. Using polynomial fitting on the data $(log (ell), log S_p(ell))$ we get the following results:
     #figure(
       image("Images/log.svg", width: 30%),
