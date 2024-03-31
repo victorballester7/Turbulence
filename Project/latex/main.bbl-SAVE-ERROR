@@ -1,0 +1,163 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{campolina}{article}{}
+      \name{author}{2}{}{%
+        {{hash=24090e5feb167619f2c21be67af32860}{%
+           family={Campolina},
+           familyi={C\bibinitperiod},
+           given={Ciro\bibnamedelima S},
+           giveni={C\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=ba6caa64cd57c22f9b057c6078b9c6e5}{%
+           family={Mailybaev},
+           familyi={M\bibinitperiod},
+           given={Alexei\bibnamedelima A},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{93265b1a909320deeae50ec9a1278804}
+      \strng{fullhash}{93265b1a909320deeae50ec9a1278804}
+      \strng{bibnamehash}{93265b1a909320deeae50ec9a1278804}
+      \strng{authorbibnamehash}{93265b1a909320deeae50ec9a1278804}
+      \strng{authornamehash}{93265b1a909320deeae50ec9a1278804}
+      \strng{authorfullhash}{93265b1a909320deeae50ec9a1278804}
+      \field{labelalpha}{CM21}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1361-6544}
+      \field{journaltitle}{Nonlinearity}
+      \field{month}{6}
+      \field{number}{7}
+      \field{title}{Fluid dynamics on logarithmic lattices}
+      \field{volume}{34}
+      \field{year}{2021}
+      \field{pages}{4684\bibrangedash 4715}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.1088/1361-6544/abef73
+      \endverb
+      \keyw{campolina}
+    \endentry
+    \entry{atomsphere}{article}{}
+      \name{author}{4}{}{%
+        {{hash=0ef9b0ed429713271ad9593954a196cf}{%
+           family={Pikeroen},
+           familyi={P\bibinitperiod},
+           given={Quentin},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=ce6535c6de8607170079bdcf79503dcc}{%
+           family={Barral},
+           familyi={B\bibinitperiod},
+           given={Amaury},
+           giveni={A\bibinitperiod}}}%
+        {{hash=dc7d47e3e97a496568e26ff227a0633b}{%
+           family={Costa},
+           familyi={C\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1fb2e2bfca0c9d01aabeba17fd7207cb}{%
+           family={Dubrulle},
+           familyi={D\bibinitperiod},
+           given={Berengere},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{73c25718aedf7b0036e7df97415966d6}
+      \strng{fullhash}{7895f3e559c3a966026a69f07c6cbbf2}
+      \strng{bibnamehash}{73c25718aedf7b0036e7df97415966d6}
+      \strng{authorbibnamehash}{73c25718aedf7b0036e7df97415966d6}
+      \strng{authornamehash}{73c25718aedf7b0036e7df97415966d6}
+      \strng{authorfullhash}{7895f3e559c3a966026a69f07c6cbbf2}
+      \field{labelalpha}{Pik+23}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Atmosphere}
+      \field{month}{11}
+      \field{title}{Log-Lattices for Atmospheric Flows}
+      \field{volume}{14}
+      \field{year}{2023}
+      \field{pages}{1690}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/atmos14111690
+      \endverb
+    \endentry
+    \entry{tree}{online}{}
+      \name{author}{1}{}{%
+        {{hash=af4ad74e915af22aa90101561598e531}{%
+           family={{Wallpaperaccess}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{af4ad74e915af22aa90101561598e531}
+      \strng{fullhash}{af4ad74e915af22aa90101561598e531}
+      \strng{bibnamehash}{af4ad74e915af22aa90101561598e531}
+      \strng{authorbibnamehash}{af4ad74e915af22aa90101561598e531}
+      \strng{authornamehash}{af4ad74e915af22aa90101561598e531}
+      \strng{authorfullhash}{af4ad74e915af22aa90101561598e531}
+      \field{labelalpha}{Wal}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-31}
+      \field{title}{Mountain Forest}
+      \verb{urlraw}
+      \verb https://wallpaperaccess.com/mountain-forest
+      \endverb
+      \verb{url}
+      \verb https://wallpaperaccess.com/mountain-forest
+      \endverb
+    \endentry
+    \entry{wikimedia_commons}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e0dedb40dda8df32fd056b6b6551502b}{%
+           family={{Wikimedia Commons}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{bibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorbibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authornamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \field{labelalpha}{Wik}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-24}
+      \field{title}{Low pressure system over Iceland}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/wiki/File:Low_pressure_system_over_Iceland.jpg
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/wiki/File:Low_pressure_system_over_Iceland.jpg
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
