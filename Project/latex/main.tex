@@ -108,17 +108,24 @@ Université Paris-Dauphine, PSL}
   \begin{align*}
     \lambda                            & = 2                    \qquad\quad\! (\text{5 terms in the sum}) \\
     \text{Golden ratio:}\qquad \varphi & \approx 1.618\quad (\text{8 terms in the sum})                   \\
-    \text{plastic number:}\qquad\sigma & \approx 1.325\quad (\text{14 terms in the sum})
+    \text{Plastic number:}\qquad\sigma & \approx 1.325\quad (\text{14 terms in the sum})
   \end{align*}
 \end{frame}
 \begin{frame}{Preservation of properties}
-  Some preserved symmetry groups \cite{campolina}:
   \begin{itemize}
-    \item Time and space translations.
-    \item Scale invariance: $\widehat{\vf{u}}(\vf{k},t) \rightsquigarrow \lambda^h \widehat{\vf{u}}(\lambda^n \vf{k},\lambda^(h-n) t)$, $\forall h\in \RR, n\in\ZZ$ and $\lambda$ the lattice parameter.
-    \item Isotropy and parity: $\widehat{\vf{u}}(\vf{k},t) \rightsquigarrow \vf{R}^{-1} \widehat{\vf{u}}(\vf{R}\vf{k},t)$, where $\vf{R}$ is any element of the group of cube symmetries.
+    \item Some preserved symmetry groups \cite{campolina}:
+          \begin{itemize}
+            \item Time and space translations.
+            \item Scale invariance: $\widehat{\vf{u}}(\vf{k},t) \rightsquigarrow \lambda^h \widehat{\vf{u}}(\lambda^n \vf{k},\lambda^{h-n} t)$, $\forall h\in \RR, n\in\ZZ$ and $\lambda$ the lattice parameter.
+            \item Isotropy and parity: $\widehat{\vf{u}}(\vf{k},t) \rightsquigarrow \vf{R}^{-1} \widehat{\vf{u}}(\vf{R}\vf{k},t)$, where $\vf{R}$ is any element of the group of cube symmetries.
+          \end{itemize}
+    \item Energy $\mathcal{E}=\frac{1}{2} \langle {\vf{u}}, {\vf{u}} \rangle$ and helicity $\mathcal{H}=\langle {\vf{u}}, {\vf{\omega}} \rangle$ are also preserved.
+          % \item Kelvin's circulation theorem is also held:
+          %       $$
+          %         \frac{\mathrm{D}}{\mathrm{D}t} \oint_C \vf{u}\cdot\mathrm{d}\vf{s} = 0
+          %       $$
+
   \end{itemize}
-  Energy $\mathcal{E}=\frac{1}{2} \langle {\vf{u}}, {\vf{u}} \rangle$ and helicity $\mathcal{H}=\langle {\vf{u}}, {\vf{\omega}} \rangle$ are also preserved.
 
   % The inner product on the lattice is defined as:
   % \begin{align*}
@@ -160,8 +167,10 @@ Université Paris-Dauphine, PSL}
   \vspace{-0.5cm}
 \end{frame}
 \begin{frame}{Viscous incompressible flow and turbulence}
-  \begin{minipage}{0.39\textwidth}
+  \begin{minipage}[t]{0.37\textwidth}
     \textbf{Dissipation anomaly:}
+
+    Scale-by-scale energy budget equation:
     $$
       \partial_t E_k + \Pi_k = -\epsilon_k + I_k
     $$
@@ -170,8 +179,8 @@ Université Paris-Dauphine, PSL}
       \includegraphics[width=0.9\textwidth]{images/viscous-1.png}
       \caption{Mean flux $\langle \Pi_k\rangle$ for different viscosities $\nu$. \cite{campolina}}
     \end{figure}
-  \end{minipage}\hfill
-  \begin{minipage}{0.59\textwidth}
+  \end{minipage}\hspace{5pt}\textcolor{\mycolor}{\vrule}\hspace{5pt}
+  \begin{minipage}[t]{0.57\textwidth}
     \textbf{Statistics of Fourier modes:}
     \begin{itemize}
       \item In the inertial range, the PDFs of the real part of the velocity behave as Gaussian.
@@ -201,7 +210,7 @@ Université Paris-Dauphine, PSL}
   \end{itemize}
   \textbf{Disadvantages:}
   \begin{itemize}
-    \item Unable to describe \textbf{non-local} interactions.
+    \item Unable to describe \textbf{non-local} interactions (e.g. in the shearing of a small and large eddy \cite{atomsphere})
     \item Cannot capture the \textbf{dispersive} properties of some systems.
 
           If $\widehat{u}\simeq \widehat{u}_0 e^{\ii (kx + \omega t)}$ and $\omega = k^\alpha$, then the interactions between waves with different $\omega$ are not well described (for $\alpha\neq 1$).
